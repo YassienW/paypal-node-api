@@ -36,10 +36,12 @@ npm i kik-paypal-api
 3. [Webhooks](#webhooks)
     * [Verify](#verify)
     
+<!--
 ##### Events
 
 1. [The Basics](#the-basics)
     * [Authenticated](#authenticated)
+-->
 
 ---
 
