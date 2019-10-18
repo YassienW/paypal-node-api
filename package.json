@@ -19,7 +19,7 @@
     "url": "https://github.com/YassienW/paypal-node-api/issues"
   },
   "homepage": "https://github.com/YassienW/paypal-node-api#readme",
-  "main": "srv/PaypalClient.js",
+  "main": "src/PaypalClient.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
