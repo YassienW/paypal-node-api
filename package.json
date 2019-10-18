@@ -1,7 +1,15 @@
 {
   "name": "paypal-node-api",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Unofficial API to make working with paypal bearable",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YassienW/paypal-node-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YassienW/paypal-node-api/issues"
+  },
+  "homepage": "https://github.com/YassienW/paypal-node-api#readme",
   "main": "srv/PaypalClient.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
