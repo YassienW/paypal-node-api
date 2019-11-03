@@ -19,6 +19,14 @@ module.exports = function subscriptions(axios){
             }catch(err){
                 throw err;
             }
+        },
+        cancel: async (subscriptionId, reason) => {
+            try{
+                const payload = {reason};
+                await axios.post(`${baseUrl}/${subscriptionId}/cancel`, payload);
+            }catch(err){
+                throw err;
+            }
         }
     }
 };
