@@ -1,6 +1,7 @@
 const EventEmitter = require("events"),
     axios = require("axios"),
     subscriptions = require("./subscriptions/subscriptions"),
+    orders = require("./orders"),
     webhooks = require("./webhooks");
 
 module.exports = class PaypalClient extends EventEmitter{
@@ -30,6 +31,7 @@ module.exports = class PaypalClient extends EventEmitter{
         });
         this.configure(env, clientId, secret);
 
+        this.orders = orders(this.axios);
         this.subscriptions = subscriptions(this.axios);
         this.webhooks = webhooks(this.axios);
     }
