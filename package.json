@@ -1,6 +1,6 @@
 {
   "name": "paypal-node-api",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Unofficial API to make working with paypal bearable",
   "keywords": [
     "paypal",
