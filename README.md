@@ -6,8 +6,7 @@ Only supports subscriptions for now, others will be added per request.
 
 **THIS IS NOT AN OFFICIAL API**
 
-<!--![npm](https://img.shields.io/npm/v/kik-node-api.svg?style=plastic)
-![npm](https://img.shields.io/npm/dt/kik-node-api.svg?style=plastic)-->
+![npm](https://img.shields.io/npm/dt/paypal-node-api?style=plastic)
 
 ## Installation
 
@@ -20,20 +19,26 @@ npm i kik-paypal-api
 ## Usage
 
 * [Getting started](#getting-started)
-* [The error object](#error-object)
 
 ##### Requests
 
-1. [The Basics](#basics)
+1. [The Basics](#the-basics)
     * [The Extras Object](#the-extras-object)
-2. [Subscriptions](#subscriptions)
-    * [Create](#create)
-    * [Details](#details)
-3. [Plans](#plans)
-    * [Create](#create)
+    * [The Error Object](#the-error-object)
+2. [Orders](#orders)
+    * [Create](#orders-create)
+    * [Update](#orders-update)
+    * [Details](#orders-details)
+    * [Authorize](#authorize)
+    * [Capture](#capture)
+3. [Subscriptions](#subscriptions)
+    * [Create](#subs-create)
+    * [Details](#subs-details)
+4. [Plans](#plans)
+    * [Create](#plans-create)
     * [List](#list)
-    * [Update](#update)
-3. [Webhooks](#webhooks)
+    * [Update](#plans-update)
+5. [Webhooks](#webhooks)
     * [Verify](#verify)
     
 <!--
@@ -86,16 +91,63 @@ paypal.on("auth", () => {
 module.exports = paypal;
 ```                                                                                                                                      
 
-### Getting Started
+### The Basics
 #### The Extras Object
 
 All required parameters are supplied directly to the functions,
 non required parameters can be supplied via the `extras` parameter, this
 object is merged into the request's payload
 
+#### The Error Object
+
 ### Requests
+#### Orders
+##### <a name="orders-create"></a>Create
+
+```javascript
+await paypal.orders.create(intent, purchaseUnits);
+```
+
+`intent`: either "CAPTURE" or "AUTHORIZE"
+
+`purchaseUnits`: an array of [purchase_unit_request](https://developer.paypal.com/docs/api/orders/v2/#definition-purchase_unit_request) objects
+
+##### <a name="orders-update"></a>Update
+
+```javascript
+await paypal.orders.update(orderId, patchRequest);
+```
+
+`orderId`: the target order's id
+
+`patchRequest`: an array of [patch](https://developer.paypal.com/docs/api/orders/v2/#definition-patch) objects
+
+##### <a name="orders-details"></a>Details
+
+```javascript
+await paypal.orders.details(orderId);
+```
+
+`orderId`: the target order's id
+
+##### Authorize
+
+```javascript
+await paypal.orders.authorize(planId);
+```
+
+`orderId`: the target order's id
+
+##### Capture
+
+```javascript
+await paypal.orders.capture(orderId);
+```
+
+`orderId`: the target order's id
+
 #### Subscriptions
-##### Create
+##### <a name="subs-create"></a>Create
 
 ```javascript
 await paypal.subscriptions.create(planId, extras);
@@ -103,7 +155,7 @@ await paypal.subscriptions.create(planId, extras);
 
 `planId`: the plan associated with this subscription
 
-##### Details
+##### <a name="subs-details"></a>Details
 
 ```javascript
 await paypal.subscriptions.details(subscriptionId);
