@@ -28,7 +28,7 @@ module.exports = function orders(axios){
         authorize: async (orderId, extras) => {
             try{
                 const payload = {...extras};
-                return (await axios.post(`${baseUrl}/${orderId}/cancel/authorize`, payload)).data;
+                return (await axios.post(`${baseUrl}/${orderId}/authorize`, payload)).data;
             }catch(err){
                 throw err;
             }
@@ -36,7 +36,7 @@ module.exports = function orders(axios){
         capture: async (orderId, extras) => {
             try{
                 const payload = {...extras};
-                return (await axios.post(`${baseUrl}/${orderId}/cancel/capture`, payload)).data;
+                return (await axios.post(`${baseUrl}/${orderId}/capture`, payload)).data;
             }catch(err){
                 throw err;
             }
