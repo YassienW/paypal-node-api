@@ -13,30 +13,30 @@ module.exports = function orders(axios){
         },
         update: async (orderId, patchRequest) => {
             try{
-                return (await axios.patch(`${baseUrl}/${orderId}`, patchRequest)).data;
+                await axios.patch(`${baseUrl}/${orderId}`, patchRequest);
             }catch(err){
                 throw err;
             }
         },
         details: async (orderId) => {
             try{
-                await axios.get(`${baseUrl}/${orderId}`);
+                return (await axios.get(`${baseUrl}/${orderId}`)).data;
             }catch(err){
                 throw err;
             }
         },
-        authorize: async (subscriptionId, extras) => {
+        authorize: async (orderId, extras) => {
             try{
                 const payload = {...extras};
-                await axios.post(`${baseUrl}/${subscriptionId}/cancel/authorize`, payload);
+                return (await axios.post(`${baseUrl}/${orderId}/cancel/authorize`, payload)).data;
             }catch(err){
                 throw err;
             }
         },
-        capture: async (subscriptionId, extras) => {
+        capture: async (orderId, extras) => {
             try{
                 const payload = {...extras};
-                await axios.post(`${baseUrl}/${subscriptionId}/cancel/capture`, payload);
+                return (await axios.post(`${baseUrl}/${orderId}/cancel/capture`, payload)).data;
             }catch(err){
                 throw err;
             }
